@@ -1,40 +1,14 @@
 ---
 import Button from "./Button.astro";
 import Logo from "./Logo.astro";
-
-const navData = [
-  {
-    title: 'Verloskunde',
-    href: '#verloskunde'
-  },
-  {
-    title: 'Zwangerschap',
-    href: '#zwangerschap'
-  },
-  {
-    title: 'Bevalling',
-    href: '#'
-  },
-  {
-    title: 'Nazorg',
-    href: '#'
-  },
-  {
-    title: 'Prijzen',
-    href: '#'
-  },
-  {
-    title: 'Team',
-    href: '#'
-  }
-]
+import { navData } from '../data/topnav'
 
 ---
 
-<nav class="fixed w-screen py-md bg-milk backdrop-blur-sm shadow-2xl z-999 border-b border-milk">
+<nav id="navbar" class="fixed w-screen py-md bg-milk backdrop-blur-sm shadow-2xl z-999 border-b border-milk">
   <div class="container flex items-center justify-between">
     <div class="flex items-center gap-xl xl:gap-2xl">
-      <a href="/"><Logo /></a>
+      <a href="/" id="logo"><Logo /></a>
   
       <ul class="gap-md hidden lg:flex">
         {navData.map(item => (
@@ -78,3 +52,64 @@ const navData = [
     transition: border-color .2s; /* I don't want to transition everything just for the border */
   }
 </style>
+
+<script>
+	const scrollToggleTarget     = document.getElementById('navbar');
+  const scrollToggleClassName  = 'minimize'
+  const resizeToggleClassName  = 'resizing'
+  const scrollThreshold        = 100 //ms
+  const resizeThrottleDuration = 100 //ms
+  const scrollThrottleDuration = 20 //ms
+
+	let reduceLogo = false;
+	let resizeStarted = false;
+	let scrollThrottle: ReturnType<typeof setTimeout> | null = null;
+	let resizeThrottle: ReturnType<typeof setTimeout> | null = null;
+
+	function toggleHeader() {
+		if(window.scrollY > scrollThreshold && !reduceLogo) {
+			reduceLogo = true;
+			scrollToggleTarget?.classList.add(scrollToggleClassName);
+			return;
+		}
+
+		if(window.scrollY < scrollThreshold && reduceLogo){
+			reduceLogo = false;
+			scrollToggleTarget?.classList.remove(scrollToggleClassName);
+			return;
+		}
+	}
+
+	function invokeScroll() { 
+		if(scrollThrottle) clearTimeout(scrollThrottle);
+		scrollThrottle = setTimeout(toggleHeader, scrollThrottleDuration);
+	}
+
+	function invokeResize() { 
+		if(resizeThrottle) clearTimeout(resizeThrottle);
+		if(!resizeStarted) {
+			resizeStarted = true;
+			onResizeStart();
+		}
+		
+		resizeThrottle = setTimeout(onResizeEnd, resizeThrottleDuration);
+	}
+
+	function onResizeStart() {
+		document.body.classList.add(resizeToggleClassName)
+	}
+
+	function onResizeEnd() {
+		resizeStarted = false;
+		if(resizeThrottle) clearTimeout(resizeThrottle);
+		document.body.classList.remove(resizeToggleClassName)
+	}
+
+	// Only bind events if logo isn't initially minimized
+	if(!scrollToggleTarget?.classList.contains(scrollToggleClassName)) {
+		window.addEventListener('scroll', invokeScroll);
+		toggleHeader();
+	}
+
+	window.addEventListener('resize', invokeResize);
+</script>
