@@ -1,0 +1,25 @@
+---
+import Figure from "./Figure.astro";
+
+type FigureProps = {
+  title: string
+  text: string
+  image?: ImageMetadata
+  href?: string
+}
+type FiguresProps = {
+  items?: FigureProps[]
+}
+const { items }:FiguresProps = Astro.props;
+---
+
+<div class="cards mx-md md:mx-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-xl">
+  {items && items.map((item, index) => (
+    <Figure
+      {...item}
+      mobileRight={index%2 ? true : false}
+    >
+      {item.text}
+    </Figure>
+  ))}
+</div>

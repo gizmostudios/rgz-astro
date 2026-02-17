@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+
+type FigureProps = {
+  image?: ImageMetadata
+  title?: string
+  mobileRight?: boolean
+}
+
+const {
+  image,
+  title = '',
+  mobileRight = false
+} = Astro.props;
+---
+
+<figure class={`
+  flex flex-col gap-md
+  ${mobileRight ? 'ml-auto md:ml-0' : 'mr-auto md:mr-0'}
+`}>
+  {image && (
+    <Image
+      class={`rounded-full rounded-bl-none w-full object-cover`}
+      src={image}
+      alt={title}
+    />
+  )}
+  <figcaption class={`
+    flex flex-col gap-xs
+  `}>
+    <h4>{title}</h4>
+    <slot />
+  </figcaption>
+</figure>

@@ -72,12 +72,13 @@ const footerUrls = [
 <footer class="w-full bg-panel-dark text-white py-4xl">
   <div class="container">
 
-    <div class="flex flex-row">
+    <div class="flex flex-col md:flex-row gap-lg">
       <div class="flex-1">
         <Logo lightText />
       </div>
+
       {footerUrls.map(list => (
-          <div class="flex-1 flex flex-col gap-md">
+          <div class="flex-1 flex flex-col gap-md pl-md md:pl-0">
             <h4>{list.title}</h4>
             <ul>
               {list.items.map(item => (
@@ -91,16 +92,15 @@ const footerUrls = [
     </div>
 
     <div class={`
-      flex flex-col
-      md:flex-row justify-between
+      flex flex-col-reverse md:flex-row gap-md
+      items-center md:items-start justify-between
+      mt-3xl pt-3xl
       color-foreground-light
-      mt-3xl
-      pt-3xl
       border-t border-foreground-light
     `}>
-      <span class="text-foreground-light">{copyText}</span>
+      <span class="text-foreground-light text-sm opacity-70">{copyText}</span>
 
-      <div class="flex flex-col md:flex-row gap-md">
+      <div class="flex flex-row gap-md">
         <span class="text-foreground-light">{kvkText}</span>
         <span class="text-foreground-light">{agbText}</span>
       </div>

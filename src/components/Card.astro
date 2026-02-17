@@ -1,17 +1,55 @@
 ---
+import { Image } from "astro:assets";
 import Button from "./Button.astro";
 
-const { title = "" } = Astro.props;
+
+const {
+  title = '',
+  variant = 'solid',
+  icon = '',
+  iconStyle = 'bg',
+  bg = 'bg-secondary',
+  as = 'div',
+  href = '',
+  linkText = 'lees meer'
+} = Astro.props;
+
+const Tag = href ? 'a' : as;
 ---
 
-<div class={`
-  bg-secondary
+<Tag class={`
+  ${variant === 'solid' ? bg : 'transparent'}
+  ${variant === 'outline' ? 'border border-neutral-300' : ''}
+  ${href ? 'hover:opacity-90 hover:shadow-xl hover:scale-[1.01]' : ''}
+  transition-transform
   p-md pt-xl rounded-3xl rounded-bl-none
   flex flex-col gap-md
   min-h-100
-`}>
-  <h3>{title}</h3>
-  <p class="flex-auto"><slot /></p>
+  relative
+`}
+  href={href}
+>
+  {icon && (
+    <div
+      class={`
+        ${iconStyle === 'header' ? 'bg-secondary-200 mx-auto w-14 rounded-full p-md aspect-square' : ''}
+        ${iconStyle === 'bg' ? 'absolute right-0 bottom-xl' : ''}
+      `}
+    >
+      <Image
+        src={icon}
+        alt={title}
+      />
+    </div>
+  )}
 
-  <Button variant="ghost" class="self-end">lees meer →</Button>
-</div>
+  <div class={`
+    relative flex flex-col gap-md flex-auto
+    ${iconStyle === 'header' ? 'text-center' : ''}
+  `}>
+    <h3>{title}</h3>
+    <slot />
+  </div>
+
+  <Button size="sm" variant="secondary" class="self-end relative">{linkText} →</Button>
+</Tag>

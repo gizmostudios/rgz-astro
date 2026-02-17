@@ -1,47 +1,24 @@
 ---
-import Card from "./Card.astro";
-
-const cardData = [
-	{
-		title: 'Verloskundige zorg',
-		text: 'Medische begeleiding door gecertificeerde verloskundigen gedurende de gehele zwangerschap.',
-		icon: ''
-	},
-	{
-		title: 'Begeleiding tijdens zwangerschap',
-		text: 'Persoonlijke begeleiding en controles voor een gezonde zwangerschap en voorbereiding op de bevalling.',
-		icon: ''
-	},
-	{
-		title: 'Bevalling & ondersteuning',
-		text: 'Professionele ondersteuning bij bevalling thuis, in het ziekenhuis of in het geboortecentrum.',
-		icon: ''
-	},
-	{
-		title: 'Nazorg & lactatie',
-		text: 'Volledige nazorg en lactatiekundige begeleiding in de eerste weken na de bevalling.',
-		icon: ''
-	},
-]
-
-const {bg = 'bg-white'} = Astro.props;
-
+const {
+	bg = 'bg-white',
+	title = '',
+	description = '',
+	horizontal = false
+} = Astro.props;
 ---
 
-<section class={`py-2xl ${bg}`}>
-	<article class="container">
-		<header class="py-xl flex flex-col items-center gap-sm">
-			<h2>Wat is onze focus?</h2>
-			<p>Integrale geboortezorg voor aanstaande ouders in regio Utrecht</p>
+<section class={`py-5xl ${bg}`}>
+	<article class={`
+		container flex
+		${horizontal ? 'flex-row' : 'flex-col'}
+		gap-2xl
+	`}>
+		<header class="flex flex-col items-center gap-sm">
+			{title && <h2 class="text-center">{title}</h2>}
+			{description && <p class="text-center max-w-180">{description}</p>}
 		</header>
 
-		<div class="cards flex flex-col md:flex-row gap-md">
-			{cardData.map(card => (
-				<Card title={card.title}>
-					{card.text}
-				</Card>
-			))}
-		</div>
+		<slot />
 
 	</article>
 </section>

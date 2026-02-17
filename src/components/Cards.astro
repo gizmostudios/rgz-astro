@@ -1,0 +1,29 @@
+---
+import Card from "./Card.astro";
+
+type CardProps = {
+  title: string
+  text: string
+  icon?: ImageMetadata
+  bg?: string
+  href?: string
+}
+type CardsProps = {
+  variant?: 'solid' | 'outline'
+  iconStyle?: 'header' | 'bg'
+  items?: CardProps[]
+}
+const { variant, iconStyle, items }:CardsProps = Astro.props;
+---
+
+<div class="cards grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
+  {items && items.map(item => (
+    <Card
+      {variant}
+      {iconStyle}
+      {...item}
+    >
+      {item.text}
+    </Card>
+  ))}
+</div>

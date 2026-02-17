@@ -1,0 +1,98 @@
+---
+// Comps
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+
+// Assets
+import iconMap from '../assets/icon-map-sm.svg'
+import iconPhone from '../assets/icon-phone-sm.svg'
+import iconPhoneWhite from '../assets/icon-phone-white.svg'
+import iconMail from '../assets/icon-mail-sm.svg'
+import iconTime from '../assets/icon-time-sm.svg'
+import mapUtrecht from '../assets/img-utrecht.png'
+
+// Content
+const title = 'Contact & Regio'
+const description = 'Bereikbaar voor de regio Utrecht'
+const contactData = [
+  {
+    title: 'Hoofdadres',
+    description: ['Maliebaan 45', '3581 CB Utrecht'],
+    icon: iconMap,
+    link: {
+      text: 'Bekijk al onze adressen',
+      href: '#adressen'
+    }
+  },
+  {
+    title: 'Telefoonnummer',
+    description: ['030 - 234 56 78'],
+    icon: iconPhone
+  },
+  {
+    title: 'E-mailadres',
+    description: ['info@rzgrutrecht.nl'],
+    icon: iconMail
+  },
+  {
+    title: 'Openingstijden',
+    description: ['Maandag t/m vrijdag: 08:00 - 18:00', 'Spoed 24/7 bereikbaar'],
+    icon: iconTime
+  }
+]
+
+const cta = {
+  icon: iconPhoneWhite,
+  text: 'Neem contact op',
+  href: '#contact'
+}
+---
+
+<section class={`
+  bg-white
+`}>
+  <article class="container py-5xl flex flex-col lg:flex-row gap-xl">
+    <div class="flex-auto flex flex-col">
+      <header class="flex flex-col gap-sm">
+        <h2>{title}</h2>
+        <p>{description}</p>
+      </header>
+  
+      <ul class="py-2xl flex flex-col gap-md">
+        {contactData.map(item => (
+          <li class="flex gap-md">
+            <div class="bg-secondary-200 p-md rounded-xl rounded-tr-none">
+              <Image src={item.icon} alt={item.title} />
+            </div>
+            <div class="flex flex-col">
+              <h4>{item.title}</h4>
+              {item.description.map(desc => <p>{desc}</p>)}
+              {item.link && (
+                <Button
+                  variant="ghost"
+                  href={item.link.href}
+                  arrow
+                >
+                  {item.link.text}
+                </Button>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      {cta && (
+        <div class="flex-none">
+          <Button href={cta.href}>
+            <Image src={cta.icon} alt="Contact icon" />
+            {cta.text}
+          </Button>
+        </div>
+      )}
+    </div>
+
+    <div class="rounded-3xl rounded-bl-none overflow-hidden">
+      <Image src={mapUtrecht} alt="Map utrecht" class="w-full" />
+    </div>
+  </article>
+</section>

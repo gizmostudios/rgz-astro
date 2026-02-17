@@ -8,15 +8,22 @@ const {
   size = "md",
   class: className = "",
   type = "button",
+  arrow = false
 } = Astro.props as {
   href?: string;
   variant?: Variant;
   size?: Size;
   class?: string;
   type?: "button" | "submit" | "reset";
+  arrow?: boolean
 };
 
-const base = "inline-flex items-center justify-center rounded-md font-medium transition focus:outline-none focus:ring-2 focus:ring-accent/40";
+const base = `
+  inline-flex items-center justify-center gap-md
+  rounded-lg font-medium
+  transition focus:outline-none focus:ring-2 focus:ring-accent/40
+  cursor-pointer
+`;
 const sizes = {
   xs: "h-9 text-sm",
   sm: "h-9 px-3 text-sm",
@@ -29,10 +36,11 @@ const variants = {
   ghost: "bg-transparent text-primary hover:bg-surface",
 };
 const cls = `${base} ${sizes[size]} ${variants[variant]} ${className}`;
+
+const Tag = href ? 'a' : 'button';
 ---
 
-{href ? (
-  <a href={href} class={cls}><slot /></a>
-) : (
-  <button type={type} class={cls}><slot /></button>
-)}
+<Tag href={href} class={cls}>
+  <slot />
+  {arrow && <span>→</span>}
+</Tag>
