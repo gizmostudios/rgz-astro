@@ -23,13 +23,19 @@
 
   /* Colors */
   --color-primary: #ED1944; /* hot pink */
-  --color-secondary: #FFCFD2;
+  --color-primary-300: color-mix(in srgb, var(--color-primary), white 40%);
+  --color-primary-400: color-mix(in srgb, var(--color-primary), white 20%);
+  --color-primary-600: color-mix(in srgb, var(--color-primary), black 20%);
+  --color-primary-700: color-mix(in srgb, var(--color-primary), black 40%);
+  --color-primary-800: color-mix(in srgb, var(--color-primary), black 60%);
+
+  --color-secondary: #FFCFD2; /* salmon */
   --color-secondary-400: color-mix(in srgb, var(--color-secondary), white 20%);
   --color-secondary-300: color-mix(in srgb, var(--color-secondary), white 40%);
   --color-secondary-200: color-mix(in srgb, var(--color-secondary), white 60%);
   --color-secondary-100: color-mix(in srgb, var(--color-secondary), white 80%);
 
-  --color-tertiary: #E8F5FB;
+  --color-tertiary: #E8F5FB; /* light blue */
   --color-foreground: #364153;
   --color-foreground-light: #8196BE;
   --color-panel-dark: #101828;
@@ -51,15 +57,15 @@
   --text-3xl: 3.125rem;  /* 50px */
   --text-4xl: 3.75rem;   /* 60px */
 
-  --spacing-xs:  0.25rem;  /* 4px  */
-  --spacing-sm:  0.5rem;   /* 8px  */
-  --spacing-md:  1rem;     /* 16px */
-  --spacing-lg:  1.5rem;   /* 24px */
-  --spacing-xl:  2rem;     /* 32px */
-  --spacing-2xl: 2.5rem;   /* 40px */
-  --spacing-3xl: 3rem;     /* 48px */
-  --spacing-4xl: 4rem;     /* 64px */
-  --spacing-5xl: 5rem;     /* 80px */
+  --spacing-xs:  0.25rem;   /* 4px  */
+  --spacing-sm:  0.5rem;    /* 8px  */
+  --spacing-md:  1rem;      /* 16px */
+  --spacing-lg:  1.5rem;    /* 24px */
+  --spacing-xl:  2rem;      /* 32px */
+  --spacing-2xl: 2.5rem;    /* 40px */
+  --spacing-3xl: 2.8125rem; /* 45px */
+  --spacing-4xl: 4rem;      /* 64px */
+  --spacing-5xl: 5rem;      /* 80px */
 }
 
 /* Globals */
@@ -78,7 +84,6 @@
 
   h1 {
     font-size: var(--text-3xl);
-    /* line-height: var(--text-4xl); */
     
     @apply text-2xl sm:text-3xl;
   }

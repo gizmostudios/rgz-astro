@@ -1,4 +1,6 @@
 ---
+import Arrow from "./Arrow.astro";
+
 type Size = "xs" | "sm" | "md" | "lg";
 type Variant = "primary" | "secondary" | "ghost";
 
@@ -19,21 +21,24 @@ const {
 };
 
 const base = `
-  inline-flex items-center justify-center gap-md
+  ${arrow ? 'justify-between' : 'justify-center'}
+  inline-flex items-center gap-md
   rounded-lg font-medium
   transition focus:outline-none focus:ring-2 focus:ring-accent/40
   cursor-pointer
+  group
 `;
 const sizes = {
   xs: "h-9 text-sm",
-  sm: "h-9 px-3 text-sm",
+  sm: "h-9 px-4 text-sm",
   md: "h-10 px-4 text-sm",
-  lg: "h-11 px-5 text-base",
+  lg: "h-11 px-4 text-md",
+  xl: "h-12 px-4 text-lg",
 };
 const variants = {
-  primary: "bg-primary text-white hover:brightness-95",
-  secondary: "bg-white text-primary hover:brightness-95",
-  ghost: "bg-transparent text-primary hover:bg-surface",
+  primary: "bg-primary text-white hover:shadow-md hover:bg-primary-600",
+  secondary: "bg-white text-primary hover:shadow-md hover:bg-primary-600 hover:text-white",
+  ghost: "border-l-2 rounded-l-none border-primary bg-transparent text-primary hover:bg-secondary-100",
 };
 const cls = `${base} ${sizes[size]} ${variants[variant]} ${className}`;
 
@@ -42,5 +47,5 @@ const Tag = href ? 'a' : 'button';
 
 <Tag href={href} class={cls}>
   <slot />
-  {arrow && <span>→</span>}
+  {arrow && <Arrow class="-translate-x-1 group-hover:translate-x-1" />}
 </Tag>

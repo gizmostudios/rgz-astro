@@ -84,8 +84,8 @@ const cta = {
       {cta && (
         <div class="flex-none">
           <Button href={cta.href}>
-            <Image src={cta.icon} alt="Contact icon" />
             {cta.text}
+            <Image class="-scale-x-100" src={cta.icon} alt="Contact icon" />
           </Button>
         </div>
       )}

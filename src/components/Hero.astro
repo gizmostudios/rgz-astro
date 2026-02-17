@@ -11,12 +11,15 @@ const buttonData = [
   {
     title: 'Aanmelden',
     variant: 'primary',
-    href: '#aanmelden'
+    href: '#aanmelden',
+    size: 'xl',
+    arrow: true
   },
   {
     title: 'Stel een vraag',
     variant: 'secondary',
-    href: '#vraag'
+    href: '#vraag',
+    arrow: true
   },
 ]
 ---
@@ -47,7 +50,7 @@ const buttonData = [
         </h1>
         <p class="xl:max-w-80">{mainDescription}</p>
         
-        <div class="flex flex-col gap-md sm:max-w-60">
+        <div class="flex flex-col gap-md">
           {buttonData.map(button => (
             <Button {...button}>{button.title}</Button>
           ))}
