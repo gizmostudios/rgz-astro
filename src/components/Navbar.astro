@@ -1,0 +1,42 @@
+---
+import Button from "./Button.astro";
+import Logo from "./Logo.astro";
+
+---
+
+<nav class="fixed w-screen py-md bg-milk backdrop-blur-sm shadow-2xl z-999 border-b border-milk">
+  <div class="container flex items-center justify-between">
+    <div class="flex items-center gap-2xl">
+      <Logo />
+  
+      <ul class="gap-md hidden lg:flex">
+        <li>Verloskunde</li>
+        <li>Zwangerschap</li>
+        <li>Bevalling</li>
+        <li>Nazorg</li>
+        <li>Team</li>
+      </ul>
+    </div>
+
+    <div class="flex items-center gap-xl">
+      <div class="hidden sm:flex items-center gap-md">
+        <Button variant="secondary">
+          <div class="flex flex-col w-6 aspect-square rounded-full overflow-hidden">
+            <div class="flex-1 bg-red-700"></div>
+            <div class="flex-1 bg-white"></div>
+            <div class="flex-1 bg-blue-800"></div>
+          </div>
+        </Button>
+        <Button variant="secondary">Contact</Button>
+        <Button>Aanmelden</Button>
+      </div>
+
+      <div class="flex flex-col w-6 h-6 gap-sm lg:hidden">
+        <div class="flex-1 bg-foreground"></div>
+        <div class="flex-1 bg-foreground"></div>
+        <div class="flex-1 bg-foreground"></div>
+      </div>
+    </div>
+  </div>
+
+</nav>

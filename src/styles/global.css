@@ -1,0 +1,94 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+/* Tailwind */
+@import "tailwindcss";
+
+@utility container {
+  padding-inline: 1rem;
+  margin-inline: auto;
+  transition: max-width 0.5s;
+
+  @media (width >= 90rem) {
+    max-width: 90rem;
+  }
+}
+
+@utility aspect-portrait {
+  aspect-ratio: 1 / 2;
+}
+
+/* Tokens */
+@theme {
+
+  /* Colors */
+  --color-primary: #ED1944;
+  --color-secondary: #FFCFD2;
+  --color-tertiary: #E8F5FB;
+  --color-foreground: #364153;
+  --color-foreground-light: #8196BE;
+  --color-panel-dark: #101828;
+  --color-panel-light: #FEF8F8;
+
+  --color-milk: rgba(250 250 250 / 70%);
+
+  /* Breakpoints */
+  --breakpoint-2xl: 90rem;
+  --breakpoint-3xl: 120rem;
+  
+  /* Text */
+  --text-xs:  0.625rem;  /* 10px */
+  --text-sm:  0.8125rem; /* 13px */
+  --text-md:  1.0rem;    /* 16px */
+  --text-lg:  1.25rem;   /* 20px */
+  --text-xl:  1.875rem;  /* 30px */
+  --text-2xl: 2.625rem;  /* 42px */
+  --text-3xl: 3.125rem;  /* 50px */
+  --text-4xl: 3.75rem;   /* 60px */
+
+  --spacing-xs:  0.25rem;  /* 4px  */
+  --spacing-sm:  0.5rem;   /* 8px  */
+  --spacing-md:  1rem;     /* 16px */
+  --spacing-lg:  1.5rem;   /* 24px */
+  --spacing-xl:  2rem;     /* 32px */
+  --spacing-2xl: 2.5rem;   /* 40px */
+  --spacing-3xl: 3rem;     /* 48px */
+  --spacing-4xl: 4rem;     /* 64px */
+}
+
+/* Globals */
+@layer base {
+  body {
+    background: var(--color-panel-dark);
+    color: var(--color-foreground);
+    font-family: "Inter", sans-serif;
+  }
+
+  h1,h2,h3,h4 {
+    font-family: "Merriweather", serif;
+    font-variation-settings: "wdth" 100;
+  }
+
+  h1 {
+    font-size: var(--text-3xl);
+    line-height: var(--text-4xl);
+    
+    @media (width < 30rem) {
+      font-size: var(--text-2xl);
+      line-height: var(--text-3xl);
+    }
+  }
+  h2 {
+    font-size: var(--text-2xl);
+    line-height: var(--text-3xl);
+  }
+  h3 {
+    font-size: var(--text-xl);
+    line-height: var(--text-2xl);
+  }
+  h4 {
+    font-size: var(--text-lg);
+    line-height: var(--text-xl);
+    font-weight: bold;
+  }
+}

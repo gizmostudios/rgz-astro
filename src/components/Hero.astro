@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import headerImage from "../assets/family-baby-bottle.jpg"
+---
+
+<main class="flex flex-col md:flex-row justify-center relative bg-foreground">
+  <Image
+    src={headerImage}
+    alt="Family with parents and baby feeding bottle"
+    class="aspect-portrait md:aspect-auto md:max-h-200 object-cover object-center"
+  />
+
+  <div class="md:absolute flex flex-col justify-center w-full h-full">
+    <div class="container">
+      <article
+        class={`
+          flex flex-col gap-md
+          md:max-w-128
+          -mt-120 sm:-mt-110 md:mt-0
+          bg-milk
+          backdrop-blur-sm
+          p-xl
+          rounded-3xl rounded-bl-none
+        `}
+      >
+        <h1>
+          Professionele geboortezorg in regio Utrecht
+        </h1>
+        <p>Verloskunde, begeleiding tijdens zwangerschap en nazorg onder één dak.</p>
+        
+        <div class="flex flex-col gap-md sm:max-w-60">
+          <Button>Aanmelden</Button>
+          <Button variant="secondary">Stel een vraag</Button>
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
