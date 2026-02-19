@@ -11,6 +11,9 @@ import iconMap from '../assets/icon-map.svg'
 import iconEuro from '../assets/icon-euro.svg'
 import iconCert from '../assets/icon-cert.svg'
 
+// Videos
+import headerVideo from "../assets/stock-video-baby-suckle.mp4"
+
 // Images
 import imgPregnant from '../assets/img-pregnant.jpg'
 import imgDelivery from '../assets/img-delivery.jpg'
@@ -34,6 +37,28 @@ import iconPhoneWhite from '../assets/icon-phone-white.svg'
 import iconMailSm from '../assets/icon-mail-sm.svg'
 import iconTimeSm from '../assets/icon-time-sm.svg'
 import mapUtrecht from '../assets/img-utrecht.png'
+
+// Hero text content
+export const hero = {
+	video: headerVideo,
+	title: 'Professionele geboortezorg voor iedereen',
+	description: 'Uw behoefte, onze missie. We staan klaar om u en uw partner door deze spannende tijd te begeleiden.',
+	buttons: [
+		{
+			title: 'Aanmelden',
+			variant: 'primary',
+			href: '#aanmelden',
+			size: 'xl',
+			arrow: true
+		},
+		{
+			title: 'Stel een vraag',
+			variant: 'secondary',
+			href: '#vraag',
+			arrow: true
+		}
+	]
+}
 
 export const sectionData = [
 	{
@@ -75,35 +100,34 @@ export const sectionData = [
 	},
 	{
 		title: 'Voor wie is onze zorg?',
-		description: 'Verschillende fases in uw zwangerschap vragen om verschillende expertises. RGZ Utrecht biedt professionele geboortezorg voor aanstaande ouders en gezinnen in regio Utrecht. Bij ons bent u welkom, en geven wij behandeling op maat.',
+		description: 'Verschillende fases in uw zwangerschap vragen om verschillende expertises. RGZ Utrecht geeft u behandeling op maat.',
 		bg: 'bg-tertiary',
-		cta: {
-			text: 'Zie waar u staat',
-			href: '#traject'
-		},
 		figures: {
+			colsMax: 2,
+			figurePoint: 'br',
+			figureLayout: 'rows',
 			items: [
 				{
-					title: 'Gezond in lijf en geest',
-					text: 'Tijdens de zwangerschap',
+					title: 'Tijdens de zwangerschap',
+					text: 'Begeleiding en controles gedurende uw zwangerschap, met aandacht voor uw gezondheid, vragen en voorbereiding op de bevalling.',
 					image: imgPregnant,
 					href: '#zwangerschap'
 				},
 				{
-					title: 'In vertrouwde handen',
-					text: 'Bij de bevalling',
+					title: 'Bij de bevalling',
+					text: ' Professionele ondersteuning tijdens de bevalling, met continue begeleiding en samenwerking met het ziekenhuis wanneer nodig.',
 					image: imgDelivery,
 					href: '#bevalling'
 				},
 				{
-					title: 'We blijven dichtbij',
-					text: 'Voor diverse gezinssamenstellingen',
+					title: 'Zorg na de bevalling',
+					text: ' Nazorg voor moeder en kind, inclusief controles, herstelbegeleiding en ondersteuning bij voeding en eerste zorgmomenten.',
 					image: imgAfter,
 					href: '#nazorg'
 				},
 				{
-					title: 'Iedereen is welkom',
-					text: 'Voor diverse gezinssamenstellingen',
+					title: 'Voor diverse gezinssamenstellingen',
+					text: ' Onze zorg is toegankelijk voor alle aanstaande ouders, met respect voor verschillende gezinssituaties en persoonlijke wensen.',
 					image: imgDiverse,
 					href: '#divers'
 				},

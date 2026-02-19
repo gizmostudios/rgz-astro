@@ -1,34 +1,54 @@
 ---
 import { Image } from "astro:assets";
+import Button from "./Button.astro";
 
-type FigureProps = {
-  image?: ImageMetadata
-  title?: string
-  mobileRight?: boolean
-}
 
 const {
   image,
   title = '',
+  figurePoint = 'bl',
+  figureLayout = 'cols',
+  href = '',
+  ctaText = 'lees meer',
   mobileRight = false
 } = Astro.props;
+
 ---
 
 <figure class={`
-  flex flex-col gap-md
+  flex gap-md flex-col
+  ${figureLayout === 'rows' ? 'xl:flex-row' : 'xl:flex-col'}
   ${mobileRight ? 'ml-auto md:ml-0' : 'mr-auto md:mr-0'}
 `}>
   {image && (
     <Image
-      class={`rounded-full rounded-bl-none w-full object-cover`}
+      class={`
+        rounded-full
+        ${figurePoint === 'tl' ? 'rounded-tl-none' : ''}
+        ${figurePoint === 'tr' ? 'rounded-tr-none' : ''}
+        ${figurePoint === 'bl' ? 'rounded-bl-none' : ''}
+        ${figurePoint === 'br' ? 'rounded-br-none' : ''}
+        w-full object-cover
+      `}
       src={image}
       alt={title}
     />
   )}
   <figcaption class={`
     flex flex-col gap-xs
+    items-start justify-center
   `}>
     <h4>{title}</h4>
     <slot />
+    {href && (
+      <Button
+        {href}
+        class="mt-md"
+        variant="secondary"
+        arrow
+      >
+        {ctaText}
+      </Button>
+    )}
   </figcaption>
 </figure>

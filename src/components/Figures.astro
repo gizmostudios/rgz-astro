@@ -8,15 +8,29 @@ type FigureProps = {
   href?: string
 }
 type FiguresProps = {
+  figurePoint?: 'tl' | 'tr' | 'bl' | 'br',
+  figureLayout?: 'rows' | 'cols',
+  colsMax?: 1 | 2 | 3 | 4,
   items?: FigureProps[]
 }
-const { items }:FiguresProps = Astro.props;
+const {
+  figurePoint = 'bl',
+  figureLayout = 'cols',
+  colsMax = 4,
+  items
+}:FiguresProps = Astro.props;
 ---
 
-<div class="cards mx-md md:mx-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-xl">
+<div class=`{
+  mx-md md:mx-0 gap-xl
+  grid grid-cols-1 md:grid-cols-2
+  ${colsMax >= 4 ? 'lg:grid-cols-4' : ''}
+}`>
   {items && items.map((item, index) => (
     <Figure
       {...item}
+      {figurePoint}
+      {figureLayout}
       mobileRight={index%2 ? true : false}
     >
       {item.text}

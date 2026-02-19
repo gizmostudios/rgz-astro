@@ -24,7 +24,13 @@ const {
     />
   </svg>
   <div class="flex flex-col">
-    <div class="title h3 text-primary-700">RGZ Utrecht</div>
-    <div class="subtitle -mt-2 text-primary-700 opacity-80">Geboortezorg</div>
+    <div class={`
+      title h3
+      ${lightText ? 'text-white' : 'text-primary-700'}
+    `}>RGZ Utrecht</div>
+    <div class={`
+      subtitle -mt-2
+      ${lightText ? 'text-foreground-light' : 'text-primary-700 opacity-80'}
+    `}>Geboortezorg</div>
   </div>
 </div>
