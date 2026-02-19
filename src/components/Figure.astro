@@ -24,10 +24,10 @@ const {
     <Image
       class={`
         rounded-full
-        ${figurePoint === 'tl' ? 'rounded-tl-none' : ''}
-        ${figurePoint === 'tr' ? 'rounded-tr-none' : ''}
-        ${figurePoint === 'bl' ? 'rounded-bl-none' : ''}
-        ${figurePoint === 'br' ? 'rounded-br-none' : ''}
+        rounded-bl-none
+        ${figurePoint === 'tl' ? 'xl:rounded-bl-full xl:rounded-tl-none' : ''}
+        ${figurePoint === 'tr' ? 'xl:rounded-bl-full xl:rounded-tr-none' : ''}
+        ${figurePoint === 'br' ? 'xl:rounded-bl-full xl:rounded-br-none' : ''}
         w-full object-cover
       `}
       src={image}

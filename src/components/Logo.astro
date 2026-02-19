@@ -4,8 +4,11 @@ const {
 } = Astro.props;
 ---
 
-<div class="visual flex items-center gap-md">
-  <svg width="45" height="45" viewBox="0 0 45 45">
+<div class="visual flex items-center gap-sm md:gap-md">
+  <svg
+    class="w-10 md:w-11.25 aspect-square"
+    viewBox="0 0 45 45"
+  >
     <path
       fill="#EC6E76"
       d="M0 16.9374C0 12.2602 3.79155 8.46869 8.46867 8.46869V8.46869C13.1458 8.46869 16.9373 12.2602 16.9373 16.9374V25.406H8.46867C3.79155 25.406 0 21.6145 0 16.9374V16.9374Z"
