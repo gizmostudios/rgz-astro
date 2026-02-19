@@ -18,6 +18,10 @@
   aspect-ratio: 3 / 5;
 }
 
+@utility aspect-landscape {
+  aspect-ratio: 4 / 3;
+}
+
 /* Tokens */
 @theme {
 
@@ -84,7 +88,8 @@
   }
 
   h1,.h1 {
-    @apply text-2xl sm:text-3xl text-primary-700;
+    font-size: var(--text-3xl);
+    line-height: var(--text-4xl);
   }
   h2,.h2 {
     font-size: var(--text-2xl);
